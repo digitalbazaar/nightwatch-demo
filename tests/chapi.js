@@ -1,4 +1,4 @@
-describe('Ecosia.org Demo', function() {
+describe('CHAPI Flow Demo', function() {
 
   before(browser => browser.url(
     'https://chapi-demo-wallet.digitalbazaar.com/'));
