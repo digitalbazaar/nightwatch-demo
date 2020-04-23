@@ -10,3 +10,4 @@ TAGS
 coverage
 node_modules
 reports
+tests_output
