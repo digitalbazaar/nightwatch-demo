@@ -71,12 +71,25 @@ describe('CHAPI Flow Demo', function() {
     const l = await browser.getValue('//html/body/dialog/div/iframe');
     console.log('LLLL', l);
 
+    const r = await browser.elementIdText(m.value.ELEMENT);
+    console.log('rrrrrrrrR', r);
+
     // await browser.assert.visible('//html/body/dialog/div/iframe/html/body/dialog');
 
-    // await browser.frame(0);
-    await browser.frame(m.value);
+    await browser.frame(0);
+    // results here are same as frame(0)
+    // await browser.frame(m.value);
+
     await browser.pause(1000);
     await browser.waitForElementVisible('//html/body');
+    const p = await browser.getValue('//html/body');
+    console.log('PPP', p);
+
+    await browser.waitForElementVisible('//html/body/dialog[2]/div/iframe');
+    const v = await browser
+      .element('xpath', '//html/body/dialog[2]/div/iframe');
+
+    await browser.frame(v.value);
     // await browser.assert.titleContains('Minimal Dev Wallet - Worker');
 
     // url = https://chapi-demo-issuer.digitalbazaar.com/
@@ -85,30 +98,14 @@ describe('CHAPI Flow Demo', function() {
 
     // await browser.assert.visible('//html/body/dialog/div/iframe');
     await browser.useCss();
-    await browser.assert.visible('iframe');
-    // await browser.waitForElementVisible('//html/body');
-    // await browser.waitForElementVisible('.container');
-    // const b = await browser.element('//html/body');
-    // console.log('BBBBbb', b);
+    await browser.waitForElementVisible('#confirmButton');
+    await browser.assert.visible('#confirmButton');
+    await browser.click('#confirmButton');
 
-    // const t = await browser.getText('//html/body');
-    // console.log('TTTTT', t);
+    await browser.waitForElementVisible('#doneButton');
+    await browser.click('#doneButton');
 
-      // const v = await browser.inn
-
-    // const y = await browser.getText('//body');
-    // console.log('YYYYY', y);
-
-    // await browser.frame(0);
-    // await browser.frame(0);
-    // await browser.frame(0);
-    // await browser.waitForElementVisible('#confirmButton');
-    // await browser.assert.visible('#confirmButton');
-    // await browser.click('#confirmButton');
-
-    // await browser.assert.visible('//button[0]');
-
-    await browser.pause(2000);
+    await browser.pause(5000);
   });
 
   after(browser => browser.end());
